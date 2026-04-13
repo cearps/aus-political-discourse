@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "discourse-intelligence-engine"
+version = "0.1.0"
+description = "Jupyter-first pipeline for ingesting and analysing Australian parliamentary transcripts (Hansard)."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Discourse Intelligence Engine contributors" }]
+dependencies = [
+  "pandas",
+  "spacy",
+  "requests",
+  "beautifulsoup4",
+  "lxml",
+  "tqdm",
+  "jupyter",
+]
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]

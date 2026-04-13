@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+venv/
+.env
+
+# Local data artifacts
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep

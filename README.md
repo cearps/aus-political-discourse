@@ -8,13 +8,13 @@ A data-driven system for analysing Australian parliamentary discourse using a hy
 
 This project transforms parliamentary transcripts (e.g. Hansard from the Parliament of Australia) into structured, analysable data to enable:
 
-- Tracking how political language evolves over time  
-- Comparing discourse across parties, speakers, and chambers  
-- Identifying emerging narratives and shifts in focus  
-- Exploring both exact phrasing and semantic meaning  
+- Tracking how political language evolves over time
+- Comparing discourse across parties, speakers, and chambers
+- Identifying emerging narratives and shifts in focus
+- Exploring both exact phrasing and semantic meaning
 
 > **Guiding principle:**  
-> *Measure what is said, not what is believed.*
+> _Measure what is said, not what is believed._
 
 ---
 
@@ -23,6 +23,7 @@ This project transforms parliamentary transcripts (e.g. Hansard from the Parliam
 The system combines two complementary layers:
 
 ### 1. Deterministic Layer (Statistical)
+
 - Tokenisation (spaCy)
 - N-gram extraction (unigrams, bigrams, trigrams)
 - Frequency and normalized metrics
@@ -33,6 +34,7 @@ The system combines two complementary layers:
   - chamber
 
 ### 2. Semantic Layer (Vector-Based)
+
 - Embeddings per speech segment
 - Semantic search (e.g. “housing affordability”)
 - Clustering of discourse themes
@@ -43,8 +45,9 @@ The system combines two complementary layers:
 ## 🏗️ Architecture (Early Stage)
 
 ### Data
-- Source: Australian Parliament Hansard transcripts  
-- Format: HTML / XML  
+
+- Source: Australian Parliament Hansard transcripts
+- Format: HTML / XML
 - Metadata:
   - date
   - chamber
@@ -53,11 +56,13 @@ The system combines two complementary layers:
   - source URL
 
 ### Storage
-- PostgreSQL (structured data)  
+
+- PostgreSQL (structured data)
 - OpenSearch (semantic search layer)
 
 ### Processing
-- Python (pandas, spaCy)  
+
+- Python (pandas, spaCy)
 - Jupyter notebooks for exploration
 
 ---
@@ -97,6 +102,7 @@ The system combines two complementary layers:
 ## 🔗 Source Linking
 
 Every insight must link back to:
+
 - original transcript segment
 - matched phrase/context
 - source URL
@@ -122,7 +128,6 @@ stats.py
 embed.py
 ```
 
-
 ---
 
 ## 📊 Example Outputs
@@ -136,47 +141,50 @@ embed.py
 
 ## ⚠️ Constraints
 
-- No interpretation of intent or belief  
-- Avoid misleading aggregation  
-- Ensure accurate speaker attribution  
-- Maintain strict linkage to source material  
+- No interpretation of intent or belief
+- Avoid misleading aggregation
+- Ensure accurate speaker attribution
+- Maintain strict linkage to source material
 
 ---
 
 ## 🚀 Roadmap
 
 ### Phase 1 (MVP)
-- Basic ingestion pipeline  
-- Speaker-level segmentation  
-- N-gram extraction  
-- Simple frequency analysis  
+
+- Basic ingestion pipeline
+- Speaker-level segmentation
+- N-gram extraction
+- Simple frequency analysis
 
 ### Phase 2
-- Improved phrase detection (noun phrases, collocations)  
-- Normalized metrics  
-- Time-series analysis  
+
+- Improved phrase detection (noun phrases, collocations)
+- Normalized metrics
+- Time-series analysis
 
 ### Phase 3
-- Embeddings + semantic search (OpenSearch)  
-- Clustering and topic exploration  
+
+- Embeddings + semantic search (OpenSearch)
+- Clustering and topic exploration
 
 ### Phase 4
-- API + frontend exploration tool  
+
+- API + frontend exploration tool
 
 ---
 
 ## 🧭 Vision
 
-Inspired by Kevin Rudd’s analysis in *On Xi Jinping*, where he tracks the frequency of key terms in Chinese political discourse, this project explores how similar techniques can be applied — and automated — for Australian parliamentary speech.
+Inspired by Kevin Rudd’s analysis in _On Xi Jinping_, where he tracks the frequency of key terms in Chinese political discourse, this project explores how similar techniques can be applied — and automated — for Australian parliamentary speech.
 
-The goal is to move from manual counting of political language to a scalable, data-driven system that continuously tracks and analyses discourse over time.
----
+## The goal is to move from manual counting of political language to a scalable, data-driven system that continuously tracks and analyses discourse over time.
 
 ## 🛠️ Getting Started
 
 ```bash
 # Clone repo
-git clone https://github.com/your-username/discourse-intelligence-engine.git
+git clone https://github.com/cearps/discourse-intelligence-engine.git
 
 # Create virtual environment
 python -m venv venv

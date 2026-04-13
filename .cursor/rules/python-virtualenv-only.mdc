@@ -1,0 +1,31 @@
+---
+description: Always run this project inside a Python virtual environment (create only if missing)
+alwaysApply: true
+---
+
+# Python virtual environment required
+
+For **any** command that runs Python, installs dependencies, runs tests, or launches notebooks, always use a **project-local virtual environment**.
+
+- **Never** run project commands using the system/global Python environment.
+- **Never** create a new environment if one already exists.
+
+## Workflow (required)
+
+- **Detect existing venv first**:
+  - Prefer an existing `venv/` (matches this repo's README).
+  - If not present, use an existing `.venv/`.
+- **Only if neither exists**, create `venv/`:
+  - `python -m venv venv`
+- **Activate before running anything**:
+  - PowerShell (Windows): `.\venv\Scripts\Activate.ps1`
+  - cmd.exe (Windows): `.\venv\Scripts\activate.bat`
+  - bash/zsh (macOS/Linux): `source venv/bin/activate`
+- **Install / run using the venv python** (recommended):
+  - `python -m pip install -r requirements.txt`
+  - `python -m pip install -e .` (if using `pyproject.toml` packaging/editable installs)
+  - `python -m pytest` (if tests are being run)
+
+## When running shell commands
+
+If you need to run commands, ensure the command sequence **activates the venv first** (or uses the venv’s Python explicitly), and do not re-create the venv unless it's missing.
