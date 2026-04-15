@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "discourse-intelligence-engine"
 version = "0.1.0"
-description = "Jupyter-first pipeline for ingesting and analysing Australian parliamentary transcripts (Hansard)."
+description = "Analysis and display layer for Australian parliamentary discourse, operating over pre-built Parquet exports."
 readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "MIT" }

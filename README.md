@@ -1,6 +1,8 @@
-# 🧠 Aus Discourse Intelligence Engine
+# 🧠 Aus political discourse (analysis + display)
 
-A data-driven system for analysing Australian parliamentary discourse using a hybrid approach of deterministic phrase statistics and semantic embeddings.
+This repository is the **analysis and display** layer for Australian parliamentary discourse: notebooks and Python utilities that operate over **pre-built Parquet exports** of Hansard-derived data.
+
+For datasource provenance and required attribution, see `docs/datasource.md`.
 
 ---
 
@@ -44,21 +46,10 @@ The system combines two complementary layers:
 
 ## 🏗️ Architecture (Early Stage)
 
-### Data
+### Data inputs
 
-- Source: Australian Parliament Hansard transcripts
-- Format: HTML / XML
-- Metadata:
-  - date
-  - chamber
-  - speaker
-  - party
-  - source URL
-
-### Storage
-
-- PostgreSQL (structured data)
-- OpenSearch (semantic search layer)
+- **Now**: you manually place Parquet exports into `data/raw/` (kept out of git).
+- **Later**: this repo will optionally read from a **ClickHouse** instance produced/maintained in another repo (once stood up).
 
 ### Processing
 
@@ -67,35 +58,12 @@ The system combines two complementary layers:
 
 ---
 
-## ⚙️ Core Pipeline
+## ⚙️ What this repo does (scope)
 
-1. **Ingestion**
-   - Load and parse transcripts
-   - Store raw text + metadata
+- **Analyse**: phrase stats, aggregations, embeddings, semantic search prototypes.
+- **Display**: notebooks now; later an API/frontend that queries ClickHouse (and/or local Parquet).
 
-2. **Segmentation**
-   - Split into speaker-level units
-
-3. **Phrase Extraction**
-   - Tokenise text
-   - Generate n-grams
-   - Filter noise (stopwords, low frequency)
-
-4. **Statistical Analysis**
-   - Compute:
-     - raw counts
-     - mentions per 1,000 words
-     - speech counts
-     - unique speaker counts
-
-5. **Vectorisation**
-   - Generate embeddings
-   - Enable semantic querying
-
-6. **Exploration**
-   - Query phrases or concepts
-   - View trends over time
-   - Drill into source material
+This repo is **not** responsible for scraping Hansard, parsing XML, or producing the canonical corpus export (that ingestion/ETL lives elsewhere).
 
 ---
 
@@ -113,19 +81,17 @@ This ensures full transparency and verifiability.
 
 ## 📁 Project Structure
 
-```
-project/
+```text
+docs/
+  datasource.md
 notebooks/
-01_ingestion.ipynb
-02_phrase_extraction.ipynb
-03_analysis.ipynb
-04_embeddings.ipynb
+  01_ingestion.ipynb
 src/
-ingest.py
-segment.py
-phrases.py
-stats.py
-embed.py
+  ingest.py
+  segment.py
+  phrases.py
+  stats.py
+  embed.py
 ```
 
 ---
@@ -152,10 +118,9 @@ embed.py
 
 ### Phase 1 (MVP)
 
-- Basic ingestion pipeline
-- Speaker-level segmentation
-- N-gram extraction
-- Simple frequency analysis
+- Load and validate provided Parquet exports
+- Speaker-level segmentation utilities (where needed for analysis)
+- Simple frequency analysis in notebooks
 
 ### Phase 2
 
@@ -165,12 +130,12 @@ embed.py
 
 ### Phase 3
 
-- Embeddings + semantic search (OpenSearch)
+- Embeddings + semantic search prototypes
 - Clustering and topic exploration
 
 ### Phase 4
 
-- API + frontend exploration tool
+- API + frontend exploration tool (backed by ClickHouse, with Parquet fallback)
 
 ---
 
@@ -178,13 +143,13 @@ embed.py
 
 Inspired by Kevin Rudd’s analysis in _On Xi Jinping_, where he tracks the frequency of key terms in Chinese political discourse, this project explores how similar techniques can be applied — and automated — for Australian parliamentary speech.
 
-## The goal is to move from manual counting of political language to a scalable, data-driven system that continuously tracks and analyses discourse over time.
+**The goal** is to move from manual counting of political language to a scalable, data-driven system that continuously tracks and analyses discourse over time.
 
 ## 🛠️ Getting Started
 
 ```bash
 # Clone repo
-git clone https://github.com/cearps/discourse-intelligence-engine.git
+git clone <this-repo>
 
 # Create virtual environment
 python -m venv venv
